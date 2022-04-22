@@ -2,9 +2,9 @@
 import axios from 'axios';
 
 //ENDPOINT
-const API_URL = 'https://go2climbapi.azurewebsites.net/api/v1/users/auth/sign-in/';
-const API_SIGN_UP_CUSTOMER = 'https://go2climbapi.azurewebsites.net/api/v1/customers/auth/sign-up/';
-const API_SIGN_UP_AGENCY = 'https://go2climbapi.azurewebsites.net/api/v1/agencies/auth/sign-up/';
+const API_URL = 'https://go2climbapi20220422125110.azurewebsites.net/api/v1/users/auth/sign-in/';
+const API_SIGN_UP_CUSTOMER = 'https://go2climbapi20220422125110.azurewebsites.net/api/v1/customers/auth/sign-up/';
+const API_SIGN_UP_AGENCY = 'https://go2climbapi20220422125110.azurewebsites.net/api/v1/agencies/auth/sign-up/';
 class AuthService {
     //EJECUTA EL PROCESO DE LOGIN DADO UN USUARIO INGRESADO
     login(user) {

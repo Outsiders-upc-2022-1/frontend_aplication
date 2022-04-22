@@ -1,7 +1,7 @@
 import http from '../../core/http-common'
 
 class ServicesService {
-    endPoint = 'https://go2climbapi.azurewebsites.net/api/v1/services';
+    endPoint = 'https://go2climbapi20220422125110.azurewebsites.net/api/v1/services';
     getAll() {
         return http.get(`${this.endPoint}`);
     }
