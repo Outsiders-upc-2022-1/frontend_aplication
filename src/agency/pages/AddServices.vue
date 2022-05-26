@@ -225,6 +225,7 @@ export default {
         await ServicesService.create(newServiceDto)
           .then(response => {
             if (response.status === 200) {
+              this.pushActivities(response.data);
               this.clearInputs();
               this.cancelAddService();
               location.reload();
@@ -233,7 +234,7 @@ export default {
           .catch(error => {
             this.errors.push(error);
           })
-      }
+        }
     },
     clearInputs() {
       this.newService.agencyId =  null;
@@ -254,6 +255,20 @@ export default {
         this.activities.push(activityDto);
         this.activity.name = null;
         this.activity.description = null;
+      }
+    },
+    async pushActivities(data){
+      for(let i = 0; i < this.activities.length; i++){
+        this.activities[i].serviceId = data.id;
+        await ServicesService.createActivity(this.activities[i])
+            .then(response => {
+              if (response.status === 200) {
+                console.log(response.data);
+              }
+            })
+            .catch(error => {
+              this.errors.push(error);
+            })
       }
     },
     getServiceId(id){

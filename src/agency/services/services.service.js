@@ -18,8 +18,8 @@ class ServicesService {
     create(createServiceDto) {
         return http.post(this.endPoint, createServiceDto);
     }
-    createActivity(idService, createActivityDto) {
-        return http.post(`${this.endPoint}/${idService}/activities`, createActivityDto);
+    createActivity(createActivityDto) {
+        return http.post(`https://localhost:5001/api/v1/activities`, createActivityDto);
     }
     update(id, updateServiceDto) {
         return http.put(`${this.endPoint}/${id}`, updateServiceDto);

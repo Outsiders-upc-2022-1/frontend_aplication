@@ -71,7 +71,7 @@ import AgencyDescription from "./AgencyDescription";
 
 export default {
   name: "PromoteService",
-  components: {AgencyDescription},
+  components: { AgencyDescription },
   data: () => ({
     start_date: (new Date(Date.now() - (new Date()).getTimezoneOffset() * 60000)).toISOString().substr(0, 10),
     end_date: (new Date(Date.now() - (new Date()).getTimezoneOffset() * 60000)).toISOString().substr(0, 10),
