@@ -104,16 +104,16 @@
                            class="logo ma-0"
                     ></v-img>
                     <div class="agency-div">
-                      <v-subheader>Offered by<span class="font-weight-bold pl-1">{{agency.name}}</span></v-subheader>
+                      <v-subheader>Offered by<span class="font-weight-bold pl-1">{{ agency.name }}</span></v-subheader>
                       <v-subheader class="align-lg-start">Registered service since {{dateTransform(service.creationDate)}}</v-subheader>
                     </div>
                   </v-col>
                   <v-col><v-spacer></v-spacer></v-col>
                   <v-col>
-                    <v-subheader class="font-weight-bold title justify-end">${{service.price}}</v-subheader>
+                    <v-subheader class="font-weight-bold title justify-end">${{ service.price }}</v-subheader>
                   </v-col>
                 </v-row>
-                <v-subheader class="font-weight-bold align-lg-start mt-4 px-0">{{agency.description}}</v-subheader>
+                <v-subheader class="font-weight-bold align-lg-start mt-4 px-0">{{ service.description }}</v-subheader>
               </v-list-item-group>
             </v-list>
           </v-card>

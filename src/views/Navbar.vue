@@ -10,7 +10,7 @@
         <div class="d-flex justify-center align-center my-auto ml-3 rounded-pill white dense--btn">
           <v-btn height="40px" @click="isUserLogged()" class="rounded-l-pill white" icon>
             <v-icon v-if="this.idUser == null">mdi-account</v-icon>
-            <v-avatar class="" color="secondary" v-else size="36"><v-img v-bind:src="photo"></v-img></v-avatar>
+            <v-avatar color="secondary" v-else size="36"><v-img v-bind:src=this.$store.state.auth.user.photo></v-img></v-avatar>
           </v-btn>
           <v-menu offset-y>
             <template v-slot:activator="{ on, attrs }">
@@ -97,7 +97,6 @@ export default {
       { id: 3, title: 'Log Out'}
     ],
     search: '',
-    photo: null,
   }),
   methods: {
     searchCommand() {
@@ -137,8 +136,6 @@ export default {
     }
   },
   mounted(){
-    this.photo = this.$store.state.auth.user.photo;
-    console.log(this.photo);
   },
 }
 </script>

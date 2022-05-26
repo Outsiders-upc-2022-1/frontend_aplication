@@ -58,9 +58,7 @@ export default {
     login(){
       this.idSignIn = this.$store.state.auth.user.id;
       this.typeUser = this.$store.state.auth.type;
-      console.log(this.idSignIn);
-      console.log(this.typeUser);
-      console.log(this.$store.state.auth.status.loggedIn);
+      console.log(this.$store.state.auth.user);
     },
     logout() {
       this.$store.dispatch('auth/logout');

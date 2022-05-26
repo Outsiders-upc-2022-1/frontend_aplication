@@ -8,7 +8,7 @@
         </v-img>
       </v-col>
       <div v-if="editInformation == false">
-        <v-card-text class="pb-0">
+        <v-card-text class="pt-0 pb-0">
           <v-card-title class="pt-0">{{agency.name}}</v-card-title>
           <v-card-subtitle>{{ agency.email }}</v-card-subtitle>
           <v-row align="center" class="mx-3">
@@ -21,10 +21,10 @@
                 size="20"
             ></v-rating>
           </v-row>
-          <v-card-text class="">
+          <v-card-text class="pb-0">
             <p>{{agency.description}}</p>
           </v-card-text>
-          <v-card-text>
+          <v-card-text class="pt-0 pb-0">
             <div class="d-flex flex-column">
               <p class="font-weight-bold">Location</p>
               <p>{{agency.location}}</p>
@@ -112,7 +112,7 @@ export default {
   data: () => ({
     errors: [],
     agency: [],
-    id: 1,
+    id: null,
     editInformation: false,
     newInformation: {
       name: "",
@@ -135,6 +135,7 @@ export default {
       this.newInformation.phoneNumber = '';
     },
     retrieveAgency(){
+      this.id = this.$store.state.auth.user.id;
       AgenciesService.getById(this.id)
       .then((response) =>{
         this.agency = response.data;
@@ -207,5 +208,8 @@ export default {
   .text-help {
     font-size: 14px;
     color: gray;
+  }
+  p {
+    margin: 0 0 5px 0;
   }
 </style>

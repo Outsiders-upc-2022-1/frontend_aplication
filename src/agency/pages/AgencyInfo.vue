@@ -1,14 +1,14 @@
 <template>
   <v-card class="py-4 px-8 mb-4 rounded-lg">
     <v-list>
-      <p>{{this.AgId}}</p>
-      <v-subheader class="title font-weight-bold pl-0">{{services.name}} </v-subheader>
+      <p>{{ this.AgId }}</p>
+      <v-subheader class="title font-weight-bold pl-0"> {{ services.name }} </v-subheader>
       <v-row>
         <v-col>
-          <v-subheader> <v-icon color ="blue"> mdi-map-marker-circle </v-icon> {{services.location}}</v-subheader>
+          <v-subheader> <v-icon color ="blue"> mdi-map-marker-circle </v-icon> {{ services.location }}</v-subheader>
         </v-col>
         <v-col>
-          <v-subheader class="title font-weight-bold justify-end"> <v-icon color ="amber"> mdi-star </v-icon>  {{services.score}}</v-subheader>
+          <v-subheader class="title font-weight-bold justify-end"> <v-icon color ="amber"> mdi-star </v-icon>  {{ services.score }}</v-subheader>
         </v-col>
       </v-row>
       <v-row class="justify-center">
@@ -76,14 +76,14 @@
             ></v-img>
           </v-col>
           <v-col>
-            <v-subheader>Offered by {{agency.name}}</v-subheader>
+            <v-subheader>Offered by {{ agency.name }}</v-subheader>
             <v-subheader class="align-lg-start">Registered agency since October 2020</v-subheader>
           </v-col>
           <v-col>
-            <v-subheader class="font-weight-bold title justify-end">${{services.price}}</v-subheader>
+            <v-subheader class="font-weight-bold title justify-end">${{ services.price }}</v-subheader>
           </v-col>
         </v-row>
-        <v-subheader class="font-weight-bold align-lg-start">{{services.description}}</v-subheader>
+        <v-subheader class="font-weight-bold align-lg-start">{{ services.description }}</v-subheader>
       </v-list-item-group>
     </v-list>
   </v-card>

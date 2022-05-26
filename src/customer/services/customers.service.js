@@ -2,7 +2,7 @@ import http from '../../core/http-common'
 import authHeader from "../../authentication/services/auth.header";
 
 class CustomersService {
-    endPoint = 'https://go2climbapi20220422125110.azurewebsites.net/api/v1/customers';
+    endPoint = 'https://localhost:5001/api/v1/customers';
 
     getAll() {
         return http.get(this.endPoint,{ headers: authHeader()});

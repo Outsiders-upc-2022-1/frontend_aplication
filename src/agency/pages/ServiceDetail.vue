@@ -17,9 +17,7 @@
                             :dark= "false">
                   <v-btn @click="overlay=false" icon > <v-icon>mdi-close</v-icon></v-btn>
                   <solicit-service :pDetail = pay :ppl = people :dte = date></solicit-service>
-
                 </v-overlay>
-
               </v-list-item-group>
             </v-list>
           </v-card>
@@ -122,11 +120,9 @@ export default {
     this.retrieveActivities();
   },
   beforeMount() {
-    //console.log("XD")
     this.id = this.$route.params.id
     this.retrieveServices();
     this.Aid = this.services.AgencyId
-    //console.log(this.serviceId)
   },
 }
 </script>
