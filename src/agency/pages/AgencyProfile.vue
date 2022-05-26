@@ -5,7 +5,7 @@
         <v-col cols="12" class="col-md-3">
           <AgencyDescription></AgencyDescription>
         </v-col>
-        <v-col cols="12" class="col-md-9" v-if="!createService">
+        <v-col cols="12" class="col-md-9" v-if="!createService && !updateService">
           <v-card class="mb-6 px-4 rounded-lg">
             <v-card-title>Services</v-card-title>
             <div class="px-4 d-flex justify-space-between">
@@ -44,7 +44,7 @@
                             class="d-flex transition-fast-in-fast-out bg-black-transparent darken-2 v-card--reveal text-h2 white--text"
                             style="height: 100%;"
                         >
-                          <v-btn dark fab icon @click="setId(service.id)"><v-icon color="blue">mdi-pencil</v-icon></v-btn>
+                          <v-btn dark fab icon @click="setUpdateService(service.id)"><v-icon color="blue">mdi-pencil</v-icon></v-btn>
                           <v-btn dark fab icon @click="deleteService(service.id)"><v-icon color="red">mdi-delete</v-icon></v-btn>
                         </div>
                       </v-expand-transition>
@@ -119,8 +119,11 @@
             </div>
           </v-card>
         </v-col>
-        <v-col cols="12" class="col-md-9" v-else>
+        <v-col cols="12" class="col-md-9" v-else-if="createService">
           <add-service v-on:cancelAddService="setAddService"></add-service>
+        </v-col>
+        <v-col cols="12" class="col-md-9" v-else-if="updateService">
+          <update-service :id="serviceId" v-on:cancelUpdateService="setUpdateService(serviceId)"></update-service>
         </v-col>
       </v-row>
     </v-container>
@@ -133,18 +136,21 @@ import AgencyService from '../services/agencies.service';
 import ServicesService from '../services/services.service';
 import AddService from '../pages/AddServices';
 import ListReviews from '../../common/pages/ListReviews';
+import UpdateService from "@/agency/pages/UpdateServices";
 export default {
   name: "CustomerProfile",
-  components: { AgencyDescription, ListReviews, AddService },
+  components: { AgencyDescription, ListReviews, AddService, UpdateService },
   data: () => ({
     errors: [],
+    serviceId: 0,
     idAgency: null,
     onlyOffer: 0,
     active: "primary",
     noActive: "secondary",
     services: [],
     reviews: [],
-    createService: false
+    createService: false,
+    updateService: false
   }),
   methods: {
     async getServiceOfAgency(id) {
@@ -210,16 +216,17 @@ export default {
     goServiceSelected(id) {
       this.$router.push({ path: `/services/${id}`})
     },
-    setId(i){
-      this.id = i
-      this.$router.push({ path: `/agency/service/${this.id}`})
+    setUpdateService(id){
+      this.serviceId = id
+      this.updateService = !this.updateService
     }
   },
   mounted() {
     this.idAgency = this.$store.state.auth.user.id;
     this.getServiceOfAgency(this.idAgency);
     this.getReviewsOfAgency(this.idAgency);
-  }
+  },
+
 }
 </script>
 
