@@ -72,7 +72,7 @@
                       >
                         <a class="text-decoration-none">
                           <v-rating
-                              :value="4"
+                              :value=service.score
                               color="amber"
                               dense
                               half-increments
@@ -174,18 +174,31 @@ export default {
           this.errors.push(error);
         })
     },
-    async getServiceOfferOfAgency(id) {
+    async getServiceOfferOfAgency() {
+      //Fatal error in backend (pending of revision)
+      let prov = this.services;
+      this.services = [];
+      for(let i=0; i < prov.length; i++) {
+        if (prov[i].isOffer)
+          this.services.push(prov[i]);
+      }
+      /*
       await AgencyService.getServiceOffer(id)
         .then((response) => {
-          this.services = response.data;
+          this.services = [];
+          for(let i=0; i < response.data.length; i++){
+            if (response.data[i].isOffer)
+              this.services.push(response.data[i]);
+          }
         })
         .catch(error => {
           this.errors.push(error);
-        })
+        })*/
     },
+
     setOnlyOffer(){
       this.onlyOffer = !this.onlyOffer;
-      if (this.onlyOffer) this.getServiceOfferOfAgency(this.idAgency);
+      if (this.onlyOffer) this.getServiceOfferOfAgency();
       else this.getServiceOfAgency(this.idAgency);
     },
     setAddService(){
